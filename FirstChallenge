@@ -1,0 +1,27 @@
+list = []
+tempList = []
+permList = []
+
+f = open("CalibValue.txt", "r")
+for line in f.readlines():
+    for x in line:
+        if x.isnumeric():
+            list.append(int(x))
+    for i in range(len(list)):
+        if len(list) == 1:
+            tempList.append(list[0])
+            permList.append(tempList[0] * 11)
+            tempList.clear()
+        elif len(list) >= 2:
+            tempList.append(list[0])
+            tempList.append(list[len(list)-1])
+            permList.append(tempList[0]*10 + tempList[len(tempList) -1])
+            tempList.clear()
+            
+        break
+    list.clear()       
+       
+tempList.clear()
+
+print(sum(permList))
+f.close()
