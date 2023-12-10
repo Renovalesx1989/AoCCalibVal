@@ -1,0 +1,86 @@
+def find(x):
+    print('text :', x)
+    list = []
+    j = 3
+    find = [x[i:i+j] for i in range(0, len(x))]
+    for i in find:
+
+
+        if i == 'one':
+            list.append(int('1'))
+        
+        elif i == 'two':
+            list.append(int('2'))
+        
+        elif i == 'ree':
+            list.append(int('3'))
+        
+        elif i == 'our':
+            list.append(int('4'))
+        
+        elif i == 'fiv':
+            list.append(int('5'))
+
+        elif i == 'six':
+            list.append(int('6'))
+        
+        elif i == 'sev':
+            list.append(int('7'))
+        
+        elif i == 'igh':
+            list.append(int('8'))
+        
+        elif i == 'nin':
+            list.append(int('9'))
+
+        elif i == 'zer':
+            list.append(int('0'))
+        for n in i:
+            if n.isnumeric():
+                list.append(int(n))
+        
+
+            
+    return list
+
+
+def calc(y):
+    print("this is calc:",y)
+    tempList = []
+    permList = []
+    if len(y) == 1:
+        tempList.append(y[0])
+        permList.append(tempList[0] * 11)
+        tempList.clear()
+        return permList.pop()
+    elif len(y) >= 2:
+        tempList.append(y[0])
+        tempList.append(y[len(y)-1])
+        permList.append(tempList[0]*10 + tempList[len(tempList) -1])
+        tempList.clear()
+        return permList.pop()
+    else:
+        permList.append(0)
+        return permList.pop()
+
+
+    
+
+
+
+
+answer = []
+f = open("CalibValue.txt", "r")
+for line in f.readlines():
+    line = line.strip()
+    findStrings = find(line)
+    doubleDigits = calc(findStrings)
+    print('results:', doubleDigits)
+    answer.append(doubleDigits)
+    #print(answer)
+
+
+    
+
+print(sum(answer))
+f.close()
